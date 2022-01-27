@@ -2,19 +2,30 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
               http://www.springframework.org/schema/beans/spring-beans.xsd
               http://www.springframework.org/schema/context
-              http://www.springframework.org/schema/context/spring-context.xsd">
+              http://www.springframework.org/schema/context/spring-context.xsd
+              http://www.springframework.org/schema/util
+              https://www.springframework.org/schema/util/spring-util.xsd">
 
         <context:property-placeholder location="classpath:musicPlayer.properties"/>
 
-        <bean id="musicBean" class="ru.gushchinDA.springCourseYouTube.ClassicalMusic">
-        </bean>
+        <bean id="classicalMusic" class="ru.gushchinDA.springCourseYouTube.ClassicalMusic"/>
+        <bean id="rockMusic" class="ru.gushchinDA.springCourseYouTube.RockMusic"/>
+        <bean id="rapMusic" class="ru.gushchinDA.springCourseYouTube.RapMusic"/>
+
+        <util:list id="music" value-type="ru.gushchinDA.springCourseYouTube.Music">
+                <ref bean="classicalMusic"/>
+                <ref bean="rockMusic"/>
+                <ref bean="rapMusic"/>
+        </util:list>
 
         <bean id="musicPlayer" class="ru.gushchinDA.springCourseYouTube.MusicPlayer">
-                <property name="music" ref="musicBean"/>
+                <property name="music" ref="music"/>
                 <property name="name" value="${musicPlayer.name}"/>
                 <property name="volume" value="${musicPlayer.volume}"/>
         </bean>
+
 </beans>

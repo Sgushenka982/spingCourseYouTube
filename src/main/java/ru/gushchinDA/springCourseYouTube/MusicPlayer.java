@@ -1,7 +1,10 @@
 package ru.gushchinDA.springCourseYouTube;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MusicPlayer {
-    private Music music;
+    private List<Music> musicList = new ArrayList<>();
 
     private String name;
 
@@ -24,17 +27,18 @@ public class MusicPlayer {
     }
 
     //IoC
-    public MusicPlayer(Music music) {
-        this.music = music;
+    public MusicPlayer(List musicList) {
+        this.musicList = musicList;
     }
 
     public MusicPlayer(){}
 
-    public void setMusic(Music music){
-        this.music = music;
+    public void setMusic(List musicList){
+        this.musicList=musicList;
     }
 
     public void playMusic(){
-        System.out.println("Playing: " + music.getSong());
+        musicList.forEach(music->System.out.println("Playing: " + music.getSong()));
+
     }
 }
