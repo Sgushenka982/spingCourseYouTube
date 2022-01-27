@@ -22,7 +22,7 @@
                 <ref bean="rapMusic"/>
         </util:list>
 
-        <bean id="musicPlayer" class="ru.gushchinDA.springCourseYouTube.MusicPlayer">
+        <bean id="musicPlayer" class="ru.gushchinDA.springCourseYouTube.MusicPlayer" scope="prototype">
                 <property name="music" ref="music"/>
                 <property name="name" value="${musicPlayer.name}"/>
                 <property name="volume" value="${musicPlayer.volume}"/>
