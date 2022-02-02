@@ -2,6 +2,7 @@ package ru.gushchinDA.springCourseYouTube;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -9,6 +10,19 @@ public class MusicPlayer {
     private Music music1;
     private Music music2;
     private Music music3;
+
+    @Value("${musicPlayer.name}")
+    private String name;
+    @Value("${musicPlayer.volume}")
+    private int volume;
+
+    public String getName() {
+        return name;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
 
     @Autowired
     public MusicPlayer(@Qualifier("classicalMusic") Music music1,

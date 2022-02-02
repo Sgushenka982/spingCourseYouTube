@@ -9,5 +9,5 @@
 
         <context:component-scan base-package="ru.gushchinDA.springCourseYouTube"/>
 
-
+        <context:property-placeholder location="classpath:musicPlayer.properties"/>
 </beans>
